@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Home, Search, Albums } from './pages'
-import { ProtectedRoute } from './utils'
+import { ProtectedRoute } from './components'
 
 const App = () => (
   <Router>

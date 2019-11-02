@@ -3,6 +3,16 @@ $text-color: #222;
 $font-size: 1.25rem;
 $icon-size: 37px;
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -28,13 +38,15 @@ header {
 main {
   flex: 1;
   padding: 1.5rem;
+}
+
+.flex {
   display: flex;
 }
 
 .fullscreen {
-  flex: 1;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -48,6 +60,7 @@ main {
   color: $text-color;
   font-size: $font-size;
   border-radius: 0.5rem;
+  margin: auto;
 }
 
 .login {
@@ -71,12 +84,73 @@ main {
     flex: 1;
     border: 0;
     outline: none;
+    width: 100%;
     font-size: $font-size;
     margin-left: $icon-size;
 
     &::placeholder {
       color: $text-color;
       text-align: center;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+
+  .card {
+    width: 18rem;
+    min-height: 25rem;
+    margin: 1rem;
+    border: 1px solid $bg-color;
+    display: flex;
+    flex-direction: column;
+
+    figure {
+      margin: 0;
+      height: 15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $bg-color;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .card-content {
+      flex: 1;
+      padding: 1rem 1rem 0;
+
+      h2 {
+        margin: 0;
+        font-size: $font-size;
+      }
+
+      h3 {
+        margin: 0.5rem 0 0;
+        font-size: 0.9rem;
+        color: #757575;
+      }
+
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+    }
+
+    .card-footer {
+      padding: 1rem;
+
+      .star {
+        width: 1.75rem;
+        padding: 2px;
+      }
     }
   }
 }

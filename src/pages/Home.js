@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { attemptLogin, isLoggedIn } from '../auth'
 import { loginUrl } from '../api'
-import icon from '../icons/spotify.png'
+import { spotify } from '../icons'
 
 const Home = () => {
   attemptLogin()
@@ -15,7 +15,7 @@ const Home = () => {
     <div className='fullscreen'>
       <a className='box login' href={loginUrl}>
         <span>Login</span>
-        <img src={icon} alt='Spotify' draggable={false} />
+        <img src={spotify} alt='Spotify' draggable={false} />
       </a>
     </div>
   )
