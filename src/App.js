@@ -1,32 +1,23 @@
 import React from 'react'
-import { Login, Search } from './components'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Home, Search, Albums } from './pages'
+import { ProtectedRoute } from './utils'
 
-const FullScreen = ({ children }) => (
-  <div className='fullscreen'>
-    {children}
-  </div>
+const App = () => (
+  <Router>
+    <header>
+      <h1 className='title'>Spotify Artist Search</h1>
+    </header>
+    <main>
+      <Switch>
+        <Route exact path='/' component={Home} />
+
+        <ProtectedRoute path='/search' component={Search} />
+
+        <ProtectedRoute path='/artists/:name' component={Albums} />
+      </Switch>
+    </main>
+  </Router>
 )
-
-const App = () => {
-  const [, query] = window.location.hash.split('#')
-  const accessToken = new URLSearchParams(query).get('access_token')
-
-  if (!accessToken) {
-    return <FullScreen>
-      <Login />
-    </FullScreen>
-  }
-
-  const tokenInStorage = localStorage.getItem('access_token')
-  if (!tokenInStorage || tokenInStorage !== accessToken) {
-    localStorage.setItem('access_token', accessToken)
-  }
-
-  return <>
-    <FullScreen>
-      <Search />
-    </FullScreen>
-  </>
-}
 
 export default App

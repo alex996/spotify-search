@@ -1,3 +1,8 @@
+$bg-color: #ccc;
+$text-color: #222;
+$font-size: 1.25rem;
+$icon-size: 37px;
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -5,16 +10,33 @@ body {
 
 #app {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: $bg-color;
+  padding: 1rem 2.5rem;
+
+  .title {
+    margin: 0;
+    font-weight: 300;
+    font-size: $font-size;
+  }
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
 }
 
 .fullscreen {
-  height: 100%;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-$text-color: #222;
 
 .box {
   display: flex;
@@ -22,36 +44,34 @@ $text-color: #222;
   width: 100%;
   max-width: 20rem;
   padding: 0.5rem 1.25rem;
-  border: 1px solid #ccc;
+  border: 1px solid $bg-color;
   color: $text-color;
-  font-size: 1.25rem;
+  font-size: $font-size;
   border-radius: 0.5rem;
 }
 
 .login {
   text-decoration: none;
-}
 
-$icon-size: 37px;
+  span {
+    flex: 1;
+    text-align: center;
+    padding-left: $icon-size;
+  }
 
-.login span {
-  flex: 1;
-  text-align: center;
-  padding-left: $icon-size;
-}
-
-.login img {
-  height: $icon-size;
+  img {
+    height: $icon-size;
+  }
 }
 
 .search {
-  max-width: 25rem;
+  max-width: 30rem;
 
   .search-box {
     flex: 1;
     border: 0;
     outline: none;
-    font-size: 1.25rem;
+    font-size: $font-size;
     margin-left: $icon-size;
 
     &::placeholder {

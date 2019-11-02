@@ -6,20 +6,23 @@
   "author": "Alex",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --open --port 3000 --compress --mode development",
+    "start": "webpack-dev-server --open --port 3000 --compress --history-api-fallback --mode development",
     "prebuild": "rimraf dist",
     "build": "webpack --mode production --progress",
     "serve": "serve dist"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",

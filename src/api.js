@@ -4,7 +4,7 @@ export const loginUrl = (
   'https://accounts.spotify.com/authorize?' +
   `client_id=${clientId}&` +
   'response_type=token&' +
-  `redirect_uri=${encodeURIComponent(window.location.href)}`
+  `redirect_uri=${encodeURIComponent(window.location.origin)}`
 )
 
 export const searchUrl = 'https://api.spotify.com/v1/search'
