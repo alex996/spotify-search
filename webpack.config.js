@@ -25,6 +25,15 @@ module.exports = (env, { mode }) => {
             'css-loader',
             'sass-loader'
           ]
+        },
+        {
+          test: /\.(jpe?g|png|ico)$/i,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: inDev ? '[name].[ext]' : '[name].[hash].[ext]'
+            }
+          }
         }
       ]
     },

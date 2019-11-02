@@ -1,3 +1,62 @@
-h1 {
-  color: turquoise;
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+#app {
+  height: 100vh;
+}
+
+.fullscreen {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$text-color: #222;
+
+.box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #ccc;
+  color: $text-color;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+}
+
+.login {
+  text-decoration: none;
+}
+
+$icon-size: 37px;
+
+.login span {
+  flex: 1;
+  text-align: center;
+  padding-left: $icon-size;
+}
+
+.login img {
+  height: $icon-size;
+}
+
+.search {
+  max-width: 25rem;
+
+  .search-box {
+    flex: 1;
+    border: 0;
+    outline: none;
+    font-size: 1.25rem;
+    margin-left: $icon-size;
+
+    &::placeholder {
+      color: $text-color;
+      text-align: center;
+    }
+  }
 }
