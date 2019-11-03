@@ -8,7 +8,7 @@ const App = () => {
   const [artists, setArtists] = useState([])
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <header>
         <h1 className='title'>Spotify Artist Search</h1>
       </header>

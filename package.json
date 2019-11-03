@@ -9,7 +9,9 @@
     "start": "webpack-dev-server --open --port 3000 --compress --history-api-fallback --mode development",
     "prebuild": "rimraf dist",
     "build": "webpack --mode production --progress",
-    "serve": "serve dist"
+    "serve": "serve -s -l 3000 dist",
+    "predeploy": "PUBLIC_URL=/spotify-search/ npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "clsx": "^1.0.4",
@@ -33,6 +35,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-standard": "^4.0.1",
     "file-loader": "^4.2.0",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^4.0.0-beta.8",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",

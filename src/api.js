@@ -4,7 +4,9 @@ export const loginUrl = (
   'https://accounts.spotify.com/authorize?' +
   `client_id=${clientId}&` +
   'response_type=token&' +
-  `redirect_uri=${encodeURIComponent(window.location.origin)}`
+  `redirect_uri=${
+    encodeURIComponent(`${window.location.origin}${process.env.PUBLIC_URL}`)
+  }`
 )
 
 const number = new Intl.NumberFormat()

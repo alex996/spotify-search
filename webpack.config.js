@@ -1,13 +1,16 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env, { mode }) => {
   const inDev = mode === 'development'
 
+  const { PUBLIC_URL = '/' } = process.env
+
   return {
     devtool: 'cheap-module-source-map',
     output: {
-      publicPath: '/',
+      publicPath: PUBLIC_URL,
       filename: inDev ? '[name].js' : '[name].[contenthash].js'
     },
     module: {
@@ -45,6 +48,9 @@ module.exports = (env, { mode }) => {
       new MiniCssExtractPlugin({
         filename: inDev ? '[name].css' : '[name].[hash].css',
         chunkFilename: inDev ? '[id].css' : '[id].[hash].css'
+      }),
+      new webpack.DefinePlugin({
+        'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL)
       })
     ]
   }
