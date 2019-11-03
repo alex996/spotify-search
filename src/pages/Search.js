@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { searchArtists } from '../api'
@@ -6,32 +6,40 @@ import { search } from '../icons'
 import { Artist } from '../components'
 
 const Search = ({ query, setQuery, artists, setArtists }) => {
-  const handleChange = e => setQuery(e.target.value)
+  const [delay, setDelay] = useState()
+  const [isDirty, setIsDirty] = useState(artists.length)
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleChange = e => {
+    const query = e.target.value
+
+    setQuery(query)
+    setIsDirty(true)
+
+    delay && clearTimeout(delay)
 
     if (query) {
-      searchArtists(query).then(setArtists)
+      setDelay(
+        setTimeout(() => searchArtists(query).then(setArtists), 250)
+      )
+    } else {
+      setArtists([])
     }
   }
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className={clsx('flex', !artists.length && 'fullscreen')}
-      >
+      <div className={clsx('flex', !isDirty && 'fullscreen')}>
         <div className='box search'>
           <input
+            autoFocus
             className='search-box'
             placeholder='Search for an artist...'
             value={query}
             onChange={handleChange}
           />
-          <input type='image' src={search} alt='Search' draggable={false} />
+          <img src={search} alt='Search' draggable={false} />
         </div>
-      </form>
+      </div>
       <div className='cards'>
         {artists.map(artist => <Artist {...artist} key={artist.id} />)}
       </div>
