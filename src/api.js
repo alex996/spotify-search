@@ -23,7 +23,7 @@ const mapArtist = ({ id, name, images, followers, popularity }) => ({
 const mapAlbum = ({ id, name, artists, images, release_date, total_tracks, external_urls }) => ({
   id,
   name,
-  artistNames: artists.map(({ name }) => name).join(', '),
+  artistNames: artists.map(({ name }) => name),
   image: images[1] ? images[1].url : placeholderUrl,
   releaseDate: release_date,
   totalTracks: total_tracks,

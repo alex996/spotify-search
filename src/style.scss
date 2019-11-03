@@ -104,6 +104,18 @@ main {
   flex-wrap: wrap;
   margin-top: 3rem;
 
+  // Adjust last row to the left
+  &::after {
+    height: 0;
+    width: 18rem;
+    content: "";
+    margin: 0 1rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    justify-content: center;
+  }
+
   .card {
     width: 18rem;
     min-height: 25rem;
@@ -132,7 +144,7 @@ main {
 
       h2 {
         margin: 0;
-        font-size: $font-normal;
+        font-size: 1.1rem;
       }
 
       h3 {

@@ -8,16 +8,16 @@ const Album = ({ image, name, artistNames, releaseDate, totalTracks, previewUrl 
     imgSrc={image}
     href={previewUrl}
     title={name}
-    subtitle={artistNames}
+    subtitle={artistNames.join(', ')}
     footer={
       <>
         <div className='meta'>
           <p>{releaseDate}</p>
-          <p>{totalTracks} tracks</p>
+          <p>{totalTracks} track{totalTracks === 1 ? '' : 's'}</p>
         </div>
         <Hyperlink href={previewUrl}>
           <div className='preview'>
-          Preview on Spotify
+            Preview on Spotify
           </div>
         </Hyperlink>
       </>
@@ -28,7 +28,7 @@ const Album = ({ image, name, artistNames, releaseDate, totalTracks, previewUrl 
 Album.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  artistNames: PropTypes.string.isRequired,
+  artistNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   releaseDate: PropTypes.string.isRequired,
   totalTracks: PropTypes.number.isRequired,
   previewUrl: PropTypes.string.isRequired
