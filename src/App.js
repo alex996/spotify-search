@@ -25,7 +25,9 @@ const App = () => {
             />
           </ProtectedRoute>
 
-          <ProtectedRoute path='/artists/:name' component={Albums} />
+          <ProtectedRoute path='/artists/:artistId'>
+            <Albums artists={artists} setArtists={setArtists} />
+          </ProtectedRoute>
         </Switch>
       </main>
     </Router>

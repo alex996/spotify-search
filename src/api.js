@@ -7,20 +7,31 @@ export const loginUrl = (
   `redirect_uri=${encodeURIComponent(window.location.origin)}`
 )
 
-const searchUrl = 'https://api.spotify.com/v1/search'
-
 const number = new Intl.NumberFormat()
+
+const placeholderUrl = 'https://via.placeholder.com/250'
 
 const mapArtist = ({ id, name, images, followers, popularity }) => ({
   id,
   name,
-  image: images[1] ? images[1].url : 'https://via.placeholder.com/250',
+  image: images[1] ? images[1].url : placeholderUrl,
   followers: number.format(followers.total),
   stars: Math.round(popularity / 20)
 })
 
-export const searchArtists = query =>
-  fetch(`${searchUrl}?q=${query}&type=artist`, {
+// eslint-disable-next-line camelcase
+const mapAlbum = ({ id, name, artists, images, release_date, total_tracks, external_urls }) => ({
+  id,
+  name,
+  artistNames: artists.map(({ name }) => name).join(', '),
+  image: images[1] ? images[1].url : placeholderUrl,
+  releaseDate: release_date,
+  totalTracks: total_tracks,
+  previewUrl: external_urls.spotify
+})
+
+const fetchApi = path =>
+  fetch(`https://api.spotify.com/v1${path}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('access_token')}`
     }
@@ -28,4 +39,14 @@ export const searchArtists = query =>
     if (res.ok) {
       return res.json()
     }
-  }).then(({ artists }) => artists.items.map(mapArtist))
+  })
+
+export const searchArtists = query =>
+  fetchApi(`/search?q=${query}&type=artist`)
+    .then(({ artists }) => artists.items.map(mapArtist))
+
+export const fetchArtist = id => fetchApi(`/artists/${id}`).then(mapArtist)
+
+export const fetchAlbums = artistId =>
+  fetchApi(`/artists/${artistId}/albums`)
+    .then(albums => albums.items.map(mapAlbum))

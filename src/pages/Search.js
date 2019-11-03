@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { searchArtists } from '../api'
 import { search } from '../icons'
-import { Artists } from '../components'
+import { Artist } from '../components'
 
 const Search = ({ query, setQuery, artists, setArtists }) => {
   const handleChange = e => setQuery(e.target.value)
@@ -32,7 +32,9 @@ const Search = ({ query, setQuery, artists, setArtists }) => {
           <input type='image' src={search} alt='Search' draggable={false} />
         </div>
       </form>
-      <Artists artists={artists} />
+      <div className='cards'>
+        {artists.map(artist => <Artist {...artist} key={artist.id} />)}
+      </div>
     </>
   )
 }

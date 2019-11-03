@@ -9,9 +9,13 @@ const Artist = ({ id, image, name, followers, stars }) => (
     href={`/artists/${id}`}
     title={name}
     subtitle={`${followers} followers`}
-    footer={Array.from(Array(stars), (_, index) => (
-      <img key={index} className='star' src={star} alt='Star' />
-    ))}
+    footer={
+      <div className='stars'>
+        {Array.from(Array(stars), (_, index) => (
+          <img key={index} className='star' src={star} alt='Star' />
+        ))}
+      </div>
+    }
   />
 )
 

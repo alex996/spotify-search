@@ -1,6 +1,9 @@
 $bg-color: #ccc;
+$bg-light-color: #efefef;
 $text-color: #222;
-$font-size: 1.25rem;
+$text-light-color: #757575;
+$font-normal: 1.25rem;
+$font-small: 0.9rem;
 $icon-size: 37px;
 
 html {
@@ -31,7 +34,7 @@ header {
   .title {
     margin: 0;
     font-weight: 300;
-    font-size: $font-size;
+    font-size: $font-normal;
   }
 }
 
@@ -58,7 +61,7 @@ main {
   padding: 0.5rem 1.25rem;
   border: 1px solid $bg-color;
   color: $text-color;
-  font-size: $font-size;
+  font-size: $font-normal;
   border-radius: 0.5rem;
   margin: auto;
 }
@@ -85,7 +88,7 @@ main {
     border: 0;
     outline: none;
     width: 100%;
-    font-size: $font-size;
+    font-size: $font-normal;
     margin-left: $icon-size;
 
     &::placeholder {
@@ -97,7 +100,7 @@ main {
 
 .cards {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 3rem;
 
@@ -123,19 +126,19 @@ main {
       }
     }
 
-    .card-content {
+    .card-header {
       flex: 1;
-      padding: 1rem 1rem 0;
+      padding: 1rem;
 
       h2 {
         margin: 0;
-        font-size: $font-size;
+        font-size: $font-normal;
       }
 
       h3 {
         margin: 0.5rem 0 0;
-        font-size: 0.9rem;
-        color: #757575;
+        font-size: $font-small;
+        color: $text-light-color;
       }
 
       h2,
@@ -145,12 +148,52 @@ main {
     }
 
     .card-footer {
-      padding: 1rem;
+      .stars {
+        display: flex;
+        padding: 0 1rem 1rem;
 
-      .star {
-        width: 1.75rem;
-        padding: 2px;
+        .star {
+          width: 1.75rem;
+          padding: 0 2px;
+        }
+      }
+
+      .meta {
+        padding: 0 1rem 1rem;
+
+        p {
+          font-size: $font-small;
+          color: $text-light-color;
+          margin: 0 0 0.25rem;
+        }
+      }
+
+      a {
+        color: #5a5454;
+        text-decoration: none;
+      }
+
+      .preview {
+        padding: 1rem;
+        border-top: 1px solid $bg-color;
+        background: $bg-light-color;
+        text-align: center;
       }
     }
+  }
+}
+
+.hero {
+  padding: 0 1rem;
+
+  h2 {
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-weight: normal;
+    margin-top: 0;
+    color: $text-light-color;
   }
 }

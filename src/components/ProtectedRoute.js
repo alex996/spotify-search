@@ -3,10 +3,16 @@ import PropTypes from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
 import { isLoggedIn } from '../auth'
 
-const ProtectedRoute = ({ component: Component, children, ...props }) => (
+const ProtectedRoute = ({ component: Component, children, render, ...props }) => (
   <Route {...props} render={() => {
     if (isLoggedIn()) {
-      return Component ? <Component /> : children
+      if (Component) {
+        return <Component {...props} />
+      } else if (render) {
+        return render(props)
+      } else {
+        return children
+      }
     }
 
     return <Redirect to='/' />
@@ -15,6 +21,7 @@ const ProtectedRoute = ({ component: Component, children, ...props }) => (
 
 ProtectedRoute.propTypes = {
   component: PropTypes.elementType,
+  render: PropTypes.func,
   children: PropTypes.node
 }
 

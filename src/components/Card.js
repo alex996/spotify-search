@@ -1,23 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Hyperlink } from '../components'
 
-const Card = ({ imgSrc, href = '#', title, subtitle, body, footer }) => (
+const Card = ({ imgSrc, href = '#', title, subtitle, footer }) => (
   <div className='card'>
-    <a href={href}>
+    <Hyperlink href={href}>
       <figure>
         <img src={imgSrc} alt={title} draggable={false} />
       </figure>
-    </a>
-    <div className='card-content'>
+    </Hyperlink>
+    <div className='card-header'>
       <h2>{title}</h2>
 
       <h3>{subtitle}</h3>
-
-      {body && <p>{body}</p>}
     </div>
-    <div className='card-footer'>
+    {footer && <div className='card-footer'>
       {footer}
-    </div>
+    </div>}
   </div>
 )
 
@@ -26,7 +25,6 @@ Card.propTypes = {
   href: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  body: PropTypes.string,
   footer: PropTypes.node
 }
 
