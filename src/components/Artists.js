@@ -11,7 +11,7 @@ const Artists = ({ artists }) => (
 )
 
 Artists.propTypes = {
-  artists: PropTypes.array
+  artists: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Artists

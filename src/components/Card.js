@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Card = ({ imgSrc, title, subtitle, body, footer }) => (
+const Card = ({ imgSrc, href = '#', title, subtitle, body, footer }) => (
   <div className='card'>
-    <figure>
-      <img src={imgSrc} alt={title} draggable={false} />
-    </figure>
+    <a href={href}>
+      <figure>
+        <img src={imgSrc} alt={title} draggable={false} />
+      </figure>
+    </a>
     <div className='card-content'>
       <h2>{title}</h2>
 
@@ -21,6 +23,7 @@ const Card = ({ imgSrc, title, subtitle, body, footer }) => (
 
 Card.propTypes = {
   imgSrc: PropTypes.string,
+  href: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   body: PropTypes.string,
